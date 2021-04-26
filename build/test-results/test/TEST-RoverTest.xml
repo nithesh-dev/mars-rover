@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="RoverTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-04-26T05:21:35" hostname="Nitheshs-MacBook-Pro.local" time="0.022">
+  <properties/>
+  <testcase name="shouldBeAbleToThrowExceptionIfRoverIsTryingToMoveOutsideThePlateau()" classname="RoverTest" time="0.012"/>
+  <testcase name="shouldBeAbleToMoveAsPerTheCommands()" classname="RoverTest" time="0.007"/>
+  <testcase name="shouldBeAbleToMoveAsPerTheCommandsForMoreThan1Rover()" classname="RoverTest" time="0.001"/>
+  <system-out><![CDATA[1 3 N
+5 1 E
+3 3 S
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

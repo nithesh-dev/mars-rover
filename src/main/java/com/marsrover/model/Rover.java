@@ -6,9 +6,9 @@ public class Rover {
 
     private int X;
     private int Y;
-    private char facingDirection;
+    private Directions facingDirection;
 
-    public Rover(int X, int Y, char facingDirection) {
+    public Rover(int X, int Y, Directions facingDirection) {
         this.X = X;
         this.Y = Y;
         this.facingDirection = facingDirection;
@@ -22,7 +22,7 @@ public class Rover {
         return Y;
     }
 
-    public char getFacingDirection() {
+    public Directions getFacingDirection() {
         return facingDirection;
     }
 
@@ -37,13 +37,13 @@ public class Rover {
     }
 
     private void takeStep(Rover rover) throws RegionOutOFBoundException {
-        char facingDirection = rover.facingDirection;
+        Directions facingDirection = rover.facingDirection;
         RegionOutOFBoundException regionOutOFBoundException = new RegionOutOFBoundException("Rover cannot be moved as it reaches it boundary");
         switch (facingDirection) {
-            case 'N' -> moveStepNorth(rover, regionOutOFBoundException);
-            case 'S' -> moveStepSouth(rover, regionOutOFBoundException);
-            case 'E' -> moveStepEast(rover, regionOutOFBoundException);
-            case 'W' -> moveStepWest(rover, regionOutOFBoundException);
+            case N -> moveStepNorth(rover, regionOutOFBoundException);
+            case S -> moveStepSouth(rover, regionOutOFBoundException);
+            case E -> moveStepEast(rover, regionOutOFBoundException);
+            case W -> moveStepWest(rover, regionOutOFBoundException);
         }
     }
 
@@ -85,26 +85,26 @@ public class Rover {
     }
 
     private void turnRight(Rover rover) {
-        if (rover.facingDirection == 'N') {
-            rover.facingDirection = 'E';
-        } else if (rover.facingDirection == 'S') {
-            rover.facingDirection = 'W';
-        } else if (rover.facingDirection == 'E') {
-            rover.facingDirection = 'S';
-        } else if (rover.facingDirection == 'W') {
-            rover.facingDirection = 'N';
+        if (rover.facingDirection == Directions.N ) {
+            rover.facingDirection = Directions.E;
+        } else if (rover.facingDirection == Directions.S) {
+            rover.facingDirection = Directions.W;
+        } else if (rover.facingDirection == Directions.E) {
+            rover.facingDirection = Directions.S;
+        } else if (rover.facingDirection == Directions.W) {
+            rover.facingDirection = Directions.N;
         }
     }
 
     private void turnLeft(Rover rover) {
-        if (rover.facingDirection == 'N') {
-            rover.facingDirection = 'W';
-        } else if (rover.facingDirection == 'S') {
-            rover.facingDirection = 'E';
-        } else if (rover.facingDirection == 'E') {
-            rover.facingDirection = 'N';
-        } else if (rover.facingDirection == 'W') {
-            rover.facingDirection = 'S';
+        if (rover.facingDirection == Directions.N) {
+            rover.facingDirection = Directions.W;
+        } else if (rover.facingDirection == Directions.S) {
+            rover.facingDirection = Directions.E;
+        } else if (rover.facingDirection == Directions.E) {
+            rover.facingDirection = Directions.N;
+        } else if (rover.facingDirection == Directions.W) {
+            rover.facingDirection = Directions.S;
         }
     }
 }

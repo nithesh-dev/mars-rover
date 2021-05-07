@@ -50,38 +50,22 @@ public class Rover {
 
     private void moveStepWest(Rover rover, RegionOutOFBoundException regionOutOFBoundException) throws RegionOutOFBoundException {
         int positionToBeMoved = rover.X - 1;
-        if (Plateau.checkRoverPosition( positionToBeMoved)) {
-            rover.X = positionToBeMoved;
-        } else {
-            throw regionOutOFBoundException;
-        }
+        moveRoverXPosition(rover, regionOutOFBoundException, positionToBeMoved);
     }
 
     private void moveStepEast(Rover rover, RegionOutOFBoundException regionOutOFBoundException) throws RegionOutOFBoundException {
         int positionToBeMoved = rover.X + 1;
-        if (Plateau.checkRoverPosition( positionToBeMoved)) {
-            rover.X = positionToBeMoved;
-        } else {
-            throw regionOutOFBoundException;
-        }
+        moveRoverXPosition(rover, regionOutOFBoundException, positionToBeMoved);
     }
 
     private void moveStepSouth(Rover rover, RegionOutOFBoundException regionOutOFBoundException) throws RegionOutOFBoundException {
         int positionToBeMoved = rover.Y - 1;
-        if (Plateau.checkRoverPosition(positionToBeMoved)) {
-            rover.Y = positionToBeMoved;
-        } else {
-            throw regionOutOFBoundException;
-        }
+        moveRoverYPosition(rover, regionOutOFBoundException, positionToBeMoved);
     }
 
     private void moveStepNorth(Rover rover, RegionOutOFBoundException regionOutOFBoundException) throws RegionOutOFBoundException {
         int positionToBeMoved = rover.Y + 1;
-        if (Plateau.checkRoverPosition(positionToBeMoved)) {
-            rover.Y = positionToBeMoved;
-        } else {
-            throw regionOutOFBoundException;
-        }
+        moveRoverYPosition(rover, regionOutOFBoundException, positionToBeMoved);
     }
 
     private void turnRight(Rover rover) {
@@ -105,6 +89,22 @@ public class Rover {
             rover.facingDirection = Directions.N;
         } else if (rover.facingDirection == Directions.W) {
             rover.facingDirection = Directions.S;
+        }
+    }
+
+    private void moveRoverXPosition(Rover rover, RegionOutOFBoundException regionOutOFBoundException, int positionToBeMoved) throws RegionOutOFBoundException {
+        if (Plateau.checkRoverPosition(positionToBeMoved)) {
+            rover.X = positionToBeMoved;
+        } else {
+            throw regionOutOFBoundException;
+        }
+    }
+
+    private void moveRoverYPosition(Rover rover, RegionOutOFBoundException regionOutOFBoundException, int positionToBeMoved) throws RegionOutOFBoundException {
+        if (Plateau.checkRoverPosition(positionToBeMoved)) {
+            rover.Y = positionToBeMoved;
+        } else {
+            throw regionOutOFBoundException;
         }
     }
 }

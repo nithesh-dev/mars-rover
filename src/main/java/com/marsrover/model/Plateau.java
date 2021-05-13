@@ -20,7 +20,7 @@ public class Plateau {
     }
 
     public static Plateau getInstance(int length, int breadth, ArrayList<Rover> rovers) {
-        if(plateau == null) {
+        if (plateau == null) {
             plateau = new Plateau(length, breadth, rovers);
         }
 
@@ -28,12 +28,11 @@ public class Plateau {
     }
 
 
-
-    public static boolean checkRoverPosition(int positionToBeMoved) {
-        return positionToBeMoved <= length
-                && positionToBeMoved <= breadth
-                && positionToBeMoved >= PLATEAU_INITIAL_BREADTH
-                && positionToBeMoved >= PLATEAU_INITIAL_LENGTH;
+    public static boolean checkRoverPosition(int XPosition, int YPosition) {
+        return XPosition <= length
+                && YPosition <= breadth
+                && YPosition >= PLATEAU_INITIAL_BREADTH
+                && XPosition >= PLATEAU_INITIAL_LENGTH;
     }
 
     public List<Rover> getRovers() {

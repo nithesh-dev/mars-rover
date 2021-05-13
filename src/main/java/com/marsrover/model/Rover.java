@@ -26,50 +26,50 @@ public class Rover {
         return facingDirection;
     }
 
-    public void takeStep(String commands) throws RegionOutOFBoundException {
+    public void move(String commands) throws RegionOutOFBoundException {
         for (char command : commands.toCharArray()) {
             switch (command) {
                 case 'L' -> turnLeft(this);
                 case 'R' -> turnRight(this);
-                case 'M' -> takeStep(this);
+                case 'M' -> move(this);
             }
         }
     }
 
-    private void takeStep(Rover rover) throws RegionOutOFBoundException {
+    private void move(Rover rover) throws RegionOutOFBoundException {
         Directions facingDirection = rover.facingDirection;
-        RegionOutOFBoundException regionOutOFBoundException = new RegionOutOFBoundException("Rover cannot be moved as it reaches it boundary");
         switch (facingDirection) {
-            case N -> moveStepNorth(rover, regionOutOFBoundException);
-            case S -> moveStepSouth(rover, regionOutOFBoundException);
-            case E -> moveStepEast(rover, regionOutOFBoundException);
-            case W -> moveStepWest(rover, regionOutOFBoundException);
+            case N -> moveNorth(rover.X, rover.Y);
+            case S -> moveSouth(rover.X, rover.Y);
+            case E -> moveEast(rover.X, rover.Y);
+            case W -> moveWest(rover.X, rover.Y);
+            default -> throw new IllegalStateException("Unexpected value: " + facingDirection);
         }
     }
 
 
-    private void moveStepWest(Rover rover, RegionOutOFBoundException regionOutOFBoundException) throws RegionOutOFBoundException {
-        int positionToBeMoved = rover.X - 1;
-        moveRoverXPosition(rover, regionOutOFBoundException, positionToBeMoved);
+    private void moveWest(int XPosition, int YPosition) throws RegionOutOFBoundException {
+        int positionToBeMoved = XPosition - 1;
+        moveRoverPosition(positionToBeMoved, YPosition);
     }
 
-    private void moveStepEast(Rover rover, RegionOutOFBoundException regionOutOFBoundException) throws RegionOutOFBoundException {
-        int positionToBeMoved = rover.X + 1;
-        moveRoverXPosition(rover, regionOutOFBoundException, positionToBeMoved);
+    private void moveEast(int XPosition, int YPosition) throws RegionOutOFBoundException {
+        int positionToBeMoved = XPosition + 1;
+        moveRoverPosition(positionToBeMoved, YPosition);
     }
 
-    private void moveStepSouth(Rover rover, RegionOutOFBoundException regionOutOFBoundException) throws RegionOutOFBoundException {
-        int positionToBeMoved = rover.Y - 1;
-        moveRoverYPosition(rover, regionOutOFBoundException, positionToBeMoved);
+    private void moveSouth(int XPosition, int YPosition) throws RegionOutOFBoundException {
+        int positionToBeMoved = YPosition - 1;
+        moveRoverPosition(XPosition, positionToBeMoved);
     }
 
-    private void moveStepNorth(Rover rover, RegionOutOFBoundException regionOutOFBoundException) throws RegionOutOFBoundException {
-        int positionToBeMoved = rover.Y + 1;
-        moveRoverYPosition(rover, regionOutOFBoundException, positionToBeMoved);
+    private void moveNorth(int XPosition, int YPosition) throws RegionOutOFBoundException {
+        int positionToBeMoved = YPosition + 1;
+        moveRoverPosition(XPosition, positionToBeMoved);
     }
 
     private void turnRight(Rover rover) {
-        if (rover.facingDirection == Directions.N ) {
+        if (rover.facingDirection == Directions.N) {
             rover.facingDirection = Directions.E;
         } else if (rover.facingDirection == Directions.S) {
             rover.facingDirection = Directions.W;
@@ -92,19 +92,21 @@ public class Rover {
         }
     }
 
-    private void moveRoverXPosition(Rover rover, RegionOutOFBoundException regionOutOFBoundException, int positionToBeMoved) throws RegionOutOFBoundException {
-        if (Plateau.checkRoverPosition(positionToBeMoved)) {
-            rover.X = positionToBeMoved;
-        } else {
-            throw regionOutOFBoundException;
-        }
-    }
 
-    private void moveRoverYPosition(Rover rover, RegionOutOFBoundException regionOutOFBoundException, int positionToBeMoved) throws RegionOutOFBoundException {
-        if (Plateau.checkRoverPosition(positionToBeMoved)) {
-            rover.Y = positionToBeMoved;
+    private void moveRoverPosition(int XPosition, int YPosition) throws RegionOutOFBoundException {
+
+        if (Plateau.checkRoverPosition(XPosition, YPosition)) {
+            this.X = XPosition;
+            this.Y = YPosition;
         } else {
-            throw regionOutOFBoundException;
+            throw new RegionOutOFBoundException("Rover cannot be moved as it reaches it boundary");
         }
     }
 }
+
+
+// Parameters in methods
+
+// More usage of enums
+
+// don't pass whole obj when everything is not in use

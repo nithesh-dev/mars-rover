@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RoverTest {
 
@@ -23,7 +23,7 @@ class RoverTest {
 
         String commands = "LMLMLMLMM";
 
-        rover.takeStep(commands);
+        rover.move(commands);
 
         System.out.println(rover.getX() + " " + rover.getY() + " " + rover.getFacingDirection());
         assertEquals(1, rover.getX());
@@ -40,20 +40,20 @@ class RoverTest {
 
         String commands = "MMRMMRMRRM";
 
-        rover.takeStep(commands);
+        rover.move(commands);
 
         Rover rover1 = new Rover(2, 1, Directions.W);
         rovers.add(rover1);
 
         String commandsRover1 = "MRMMLMRMRMMMRM";
 
-        rover1.takeStep(commandsRover1);
+        rover1.move(commandsRover1);
 
         System.out.println(rover.getX() + " " + rover.getY() + " " + rover.getFacingDirection());
         System.out.println(rover1.getX() + " " + rover1.getY() + " " + rover1.getFacingDirection());
 
         assertEquals(5, rover.getX());
-        assertEquals(3,rover1.getX());
+        assertEquals(3, rover1.getX());
         assertEquals(3, rover1.getY());
         assertEquals(Directions.S, rover1.getFacingDirection());
     }
@@ -68,8 +68,75 @@ class RoverTest {
 
         String instructions = "MMM";
 
-        RegionOutOFBoundException regionOutOFBoundException = assertThrows(RegionOutOFBoundException.class, () -> rover.takeStep(instructions));
+        RegionOutOFBoundException regionOutOFBoundException = assertThrows(RegionOutOFBoundException.class, () -> rover.move(instructions));
 
         assertEquals("Rover cannot be moved as it reaches it boundary", regionOutOFBoundException.getMessage());
+    }
+
+    @Test
+    void shouldMoveRoverTillTheEastEdgeOfThePlateau() throws RegionOutOFBoundException {
+
+        Rover rover = new Rover(4, 2, Directions.E);
+        Plateau plateau = Plateau.getInstance(5, 2, new ArrayList<>());
+
+        List<Rover> rovers = plateau.getRovers();
+        rovers.add(rover);
+
+        String commands = "M";
+
+        rover.move(commands);
+
+        System.out.println("->" + rover.getX() + " " + rover.getY() + " " + rover.getFacingDirection());
+        assertEquals(5, rover.getX());
+    }
+
+    @Test
+    void shouldMoveRoverTillTheNorthEdgeOfThePlateau() throws RegionOutOFBoundException {
+
+        Rover rover = new Rover(5, 1, Directions.N);
+        Plateau plateau = Plateau.getInstance(5, 2, new ArrayList<>());
+
+        List<Rover> rovers = plateau.getRovers();
+        rovers.add(rover);
+
+        String commands = "M";
+
+        rover.move(commands);
+
+        System.out.println(rover.getX() + " " + rover.getY() + " " + rover.getFacingDirection());
+        assertEquals(2, rover.getY());
+
+    }
+
+    @Test
+    void shouldMoveRoverTillTheSouthEdgeOfThePlateau() throws RegionOutOFBoundException {
+        Rover rover = new Rover(5, 1, Directions.S);
+        Plateau plateau = Plateau.getInstance(5, 2, new ArrayList<>());
+
+        List<Rover> rovers = plateau.getRovers();
+        rovers.add(rover);
+
+        String commands = "M";
+
+        rover.move(commands);
+
+        System.out.println(rover.getX() + " " + rover.getY() + " " + rover.getFacingDirection());
+        assertEquals(0, rover.getY());
+    }
+
+    @Test
+    void shouldMoveRoverTillTheWestEdgeOfThePlateau() throws RegionOutOFBoundException {
+        Rover rover = new Rover(1, 1, Directions.W);
+        Plateau plateau = Plateau.getInstance(5, 2, new ArrayList<>());
+
+        List<Rover> rovers = plateau.getRovers();
+        rovers.add(rover);
+
+        String commands = "M";
+
+        rover.move(commands);
+
+        System.out.println(rover.getX() + " " + rover.getY() + " " + rover.getFacingDirection());
+        assertEquals(0, rover.getX());
     }
 }

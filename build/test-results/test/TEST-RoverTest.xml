@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="RoverTest" tests="7" skipped="0" failures="6" errors="0" timestamp="2021-06-07T14:40:59" hostname="Nitheshs-MacBook-Pro.local" time="0.024">
+<testsuite name="RoverTest" tests="7" skipped="0" failures="6" errors="0" timestamp="2021-06-07T14:44:10" hostname="Nitheshs-MacBook-Pro.local" time="0.025">
   <properties/>
-  <testcase name="shouldMoveRoverTillTheSouthEdgeOfThePlateau()" classname="RoverTest" time="0.014">
+  <testcase name="shouldMoveRoverTillTheSouthEdgeOfThePlateau()" classname="RoverTest" time="0.012">
     <failure message="exceptions.RegionOutOFBoundException: Rover cannot be moved as it reaches it boundary" type="exceptions.RegionOutOFBoundException">exceptions.RegionOutOFBoundException: Rover cannot be moved as it reaches it boundary
 	at com.marsrover.model.Rover.moveRoverPosition(Rover.java:102)
 	at com.marsrover.model.Rover.moveEast(Rover.java:58)
@@ -194,7 +194,7 @@
 </failure>
   </testcase>
   <testcase name="shouldBeAbleToThrowExceptionIfRoverIsTryingToMoveOutsideThePlateau()" classname="RoverTest" time="0.004"/>
-  <testcase name="shouldMoveRoverTillTheNorthEdgeOfThePlateau()" classname="RoverTest" time="0.0">
+  <testcase name="shouldMoveRoverTillTheNorthEdgeOfThePlateau()" classname="RoverTest" time="0.001">
     <failure message="exceptions.RegionOutOFBoundException: Rover cannot be moved as it reaches it boundary" type="exceptions.RegionOutOFBoundException">exceptions.RegionOutOFBoundException: Rover cannot be moved as it reaches it boundary
 	at com.marsrover.model.Rover.moveRoverPosition(Rover.java:102)
 	at com.marsrover.model.Rover.moveEast(Rover.java:58)
@@ -291,7 +291,7 @@
 	at java.base/java.lang.Thread.run(Thread.java:832)
 </failure>
   </testcase>
-  <testcase name="shouldBeAbleToMoveAsPerTheCommands()" classname="RoverTest" time="0.0">
+  <testcase name="shouldBeAbleToMoveAsPerTheCommands()" classname="RoverTest" time="0.001">
     <failure message="exceptions.RegionOutOFBoundException: Rover cannot be moved as it reaches it boundary" type="exceptions.RegionOutOFBoundException">exceptions.RegionOutOFBoundException: Rover cannot be moved as it reaches it boundary
 	at com.marsrover.model.Rover.moveRoverPosition(Rover.java:102)
 	at com.marsrover.model.Rover.moveNorth(Rover.java:68)
@@ -483,7 +483,7 @@
 	at java.base/java.lang.Thread.run(Thread.java:832)
 </failure>
   </testcase>
-  <testcase name="shouldBeAbleToMoveAsPerTheCommandsForMoreThan1Rover()" classname="RoverTest" time="0.001">
+  <testcase name="shouldBeAbleToMoveAsPerTheCommandsForMoreThan1Rover()" classname="RoverTest" time="0.004">
     <failure message="exceptions.RegionOutOFBoundException: Rover cannot be moved as it reaches it boundary" type="exceptions.RegionOutOFBoundException">exceptions.RegionOutOFBoundException: Rover cannot be moved as it reaches it boundary
 	at com.marsrover.model.Rover.moveRoverPosition(Rover.java:102)
 	at com.marsrover.model.Rover.moveEast(Rover.java:58)

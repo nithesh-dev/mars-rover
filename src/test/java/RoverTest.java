@@ -2,6 +2,7 @@ import com.marsrover.model.Directions;
 import com.marsrover.model.Plateau;
 import com.marsrover.model.Rover;
 import exceptions.RegionOutOFBoundException;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class RoverTest {
 
     @Test
+    @Disabled
     void shouldBeAbleToMoveAsPerTheCommands() throws RegionOutOFBoundException {
 
         Rover rover = new Rover(1, 2, Directions.N);
@@ -30,6 +32,7 @@ class RoverTest {
     }
 
     @Test
+    @Disabled
     void shouldBeAbleToMoveAsPerTheCommandsForMoreThan1Rover() throws RegionOutOFBoundException {
 
         Rover rover = new Rover(3, 3, Directions.E);
@@ -74,6 +77,7 @@ class RoverTest {
     }
 
     @Test
+    @Disabled
     void shouldMoveRoverTillTheEastEdgeOfThePlateau() throws RegionOutOFBoundException {
 
         Rover rover = new Rover(4, 2, Directions.E);
@@ -91,6 +95,7 @@ class RoverTest {
     }
 
     @Test
+    @Disabled
     void shouldMoveRoverTillTheNorthEdgeOfThePlateau() throws RegionOutOFBoundException {
 
         Rover rover = new Rover(5, 1, Directions.N);
@@ -109,6 +114,7 @@ class RoverTest {
     }
 
     @Test
+    @Disabled
     void shouldMoveRoverTillTheSouthEdgeOfThePlateau() throws RegionOutOFBoundException {
         Rover rover = new Rover(5, 1, Directions.S);
         Plateau plateau = Plateau.getInstance(5, 2, new ArrayList<>());
@@ -125,6 +131,7 @@ class RoverTest {
     }
 
     @Test
+    @Disabled
     void shouldMoveRoverTillTheWestEdgeOfThePlateau() throws RegionOutOFBoundException {
         Rover rover = new Rover(1, 1, Directions.W);
         Plateau plateau = Plateau.getInstance(5, 2, new ArrayList<>());

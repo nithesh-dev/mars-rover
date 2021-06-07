@@ -29,9 +29,9 @@ public class Rover {
     public void move(String commands) throws RegionOutOFBoundException {
         for (char command : commands.toCharArray()) {
             switch (command) {
-                case 'L' -> turnLeft(this);
-                case 'R' -> turnRight(this);
-                case 'M' -> move(this);
+                case 'L': turnLeft(this);
+                case 'R': turnRight(this);
+                case 'M': move(this);
             }
         }
     }
@@ -39,11 +39,11 @@ public class Rover {
     private void move(Rover rover) throws RegionOutOFBoundException {
         Directions facingDirection = rover.facingDirection;
         switch (facingDirection) {
-            case N -> moveNorth(rover.X, rover.Y);
-            case S -> moveSouth(rover.X, rover.Y);
-            case E -> moveEast(rover.X, rover.Y);
-            case W -> moveWest(rover.X, rover.Y);
-            default -> throw new IllegalStateException("Unexpected value: " + facingDirection);
+            case N: moveNorth(rover.X, rover.Y);
+            case S: moveSouth(rover.X, rover.Y);
+            case E: moveEast(rover.X, rover.Y);
+            case W: moveWest(rover.X, rover.Y);
+            default: throw new IllegalStateException("Unexpected value: " + facingDirection);
         }
     }
 
